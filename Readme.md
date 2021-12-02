@@ -1,112 +1,64 @@
 # Proof of Authority Development Chain
+## The devlopment of JMcoin
 
 1. Issues persisted when running the puppeth directory as a class. 
-1. When Initiatting the puppeth command to start building our network:
+2. When utlizing the go etherieum genesis block we faced a chain value error that will be outlined below
+3. When Initiatting the puppeth command to start building our network:
    
         ./puppeth
-we we were met with the following challenge 
-![puppeth attempt 1](https://user-images.githubusercontent.com/87097889/144486054-26a8758b-ab75-499e-82b4-ce047106403b.png)
+As a class we were met with a few challenges when attempting to activate the mininig operations on our genesis bloc using the puppeth tool
+
+![puppeth attempt 1](https://user-images.githubusercontent.com/87097889/144486611-eb96531f-b5c2-47d1-8c7b-31b6425026f5.png)
+
+![puppeth attempt 2](https://user-images.githubusercontent.com/87097889/144486649-21386074-e7d6-47e2-b661-549a84cca423.png)
+
+![puppeth attempt 3](https://user-images.githubusercontent.com/87097889/144486670-59d81660-2553-4407-8974-4e059f3aaf84.png)
+
+Mining of our first node of jmcoin as shown below was successful. The operation was able to send and recive rewards against the created network 
+  ![puppeth mining](https://user-images.githubusercontent.com/87097889/144487465-b872272f-509c-4a5a-a8ae-6feeca93abf7.png)
+![puppeth mining2](https://user-images.githubusercontent.com/87097889/144487492-db976881-385e-48de-a553-249444a8b844.png)
+![Mining success](https://user-images.githubusercontent.com/87097889/144487627-64998c64-4091-4374-80b3-ed2e29a28bd8.png)
 
 
-7. Then, will be asked to specify network ID
-8. Next is to manage our existing genesis to export the genesis configurations on the local directory; which consist of 4 json files:
-   - garencenet.json 
-   - garencenet-aleth.json
-   - garencenet-harmony.json
-   - garencenet-parity.json
-
-![](Images/3.jpg)
-
-9.  Now, it's time to initiate our nodes, opening two different git bash windows.. will run this command
-
-        ./geth init garencenet.json --datadir aaron
-        ./geth init garencenet.json --datadir kyle
-![](Images/4.jpg)
-![](Images/5.jpg)
-
-10. Mining time for node1 which is aaron, run the following command and will be required to enter the node password
-
-        ./geth --datadir nodename --mine --minerthreads 1
-
-![](Images/6.jpg)
-
-aaron (node 1) P2P network was displayed in screenshot above, notice port for instance starts at 30303 essentially P2P network generated for second node will be 30304:
-
-        Started P2P networking                   
-        self=enode://mixed of alphabetic & numeric code@rpcaddress:port
+it was the utilization of our second node where we were unable to successfully record transactions as our chain link error occured
+note that as I forgot my password to node2 I had to create a third node where it still was unable to create a chain link. 
+![puppeth fail message](https://user-images.githubusercontent.com/87097889/144487908-1978a6b8-2203-4731-973f-89d4ba1babc8.png)
 
 
-11.    to start mining in node 2 which is kyle, run the following command & a password will be required to unlock account.
+Leading to the creation of our blockchain to be utilized over an alternate web based nerwork, Ganache
+![blockchain creation](https://user-images.githubusercontent.com/87097889/144488053-4d9a6127-c2c7-4a23-88fb-8aee7bc82158.png)
 
-    ./geth --datadir kyle --unlock "kyle_public_address" --port 30304 --bootnodes "enode:aaron enode" --ipcdisable --mine --minerthreads 2 --allow-insecure-unlock
-node 2 P2P network has to be fetched & stored as well
-
-    Started P2P networking                   
-    self=enode://b25304c833d5773fe18809fdfd8074e90c990f8e4e1cc183e25065d7579c056a0d0f685260aa808598f5ca38dba0b029d874b8d84ea8db1ca63aa0215f753c33@127.0.0.1:30304
-
-12. Now the 2 nodes will start looking for peers & matching other peers, a successful minning will look like screenshot below:
-
-![](Images/7.jpg)
-
-13. It's time to create custom nodes on my crypto app:
+Once this test network was initiated I utilized MyCrypto Wallet to create and execute a transactions over the network
     
-    - from Change Network in my crypto app
-  
-  ![](Images/crypto.jpg)
-    
-- select Add custom node
-
-![](Images/csutom.jpg)
+- added the custom node "bootcamp node"
+![bootcampnode](https://user-images.githubusercontent.com/87097889/144489116-f0a99584-4bcf-48a2-b3e0-f3a6836fe952.png)
 
 - will enter the first node name in the crossponding box
-- network name is garencenet
+- network name is "bootcamp node"
 - currency is ethereum
-- chain ID is the network ID we specify in no. 7
-- url is  "http:/127.0.0.1:8545"
-- click save & use custom node
-- will do the exact same steps for the second node
+- chain ID is the network ID (it forced me to accept 1545) 
+- url is  "http:/127.0.0.1:7545"
+- click save & use custom nodee
 
-![](Images/set.jpg)
+Two accounts were seleceted from the block chain (Ganache) 
+![ganache account 1](https://user-images.githubusercontent.com/87097889/144490377-5c637ed5-4dc4-45ec-9346-61b4558dbc7a.png)
 
-- navigate back to my crypto to start uploading keystore file for each node individually
+![ganache account 2](https://user-images.githubusercontent.com/87097889/144490392-512411d7-14b2-42ac-a40e-9d0b8d6bf89f.png)
 
-![](Images/key.jpg)
 
-- Unlock keystore file with the same password created for each node
+Transfered ETH from node to another, check for transaction status
+![transaction confirm](https://user-images.githubusercontent.com/87097889/144490454-c7631d31-28b0-4243-a7c6-3f40df68aa7d.png)
 
-![](Images/wallet.jpg)
+![transaction proof](https://user-images.githubusercontent.com/87097889/144490490-5ad7f1d3-3050-4db9-8c1b-aa67951f6094.png)
 
-14. Transfer ETH from node to another, check for transaction status
-
-![](Images/conf.jpg)
 
 
 ###  Challenges I faced:
 
-1.  The first challenge I faced was when asked to enter password, if I used the password.txt for each node instead of typing it, I received an error due to failed authentication
+1. node issue preventing me from successfully creating a local blockchain 
 
-![](Images/error1.jpg)
-
-2.  The second challange was connecting kyle node, I had to delete another node on a different network because of the url used was the same.
-3.  despite the huge balance on each account is huge, the amount available to transfer to the second was far less than the transaction fee, so I transfer zero ethereum to show that the network & the 2 nodes are connected & active.
 
 ### Challenges Solved as follows:
-        1- Deleted previous nodes that prevent me from creating node 2 wallet in my crypto app
-![](PythonTrial/kylewallet.jpg)
-        
-        2- used python to get transaction hash code is attached as garencenet.py
-
-        3- process command using anaconda prompt
-![](PythonTrial/anaconda.jpg)
-*   **First Line : is BlockNumber**
-*   **Seond Line : balance of aaron wallet**
-*   **Third Line : balance of kyle wallet**
-*   **Fourth Line : transaction hash**
-  
-        4- screenshot transaction confirmation from my crypto
-
-![](PythonTrial/confirmation.jpg)
-
-
+2. created and utlized a blockchain network using the Ganache tool. 
 
 
