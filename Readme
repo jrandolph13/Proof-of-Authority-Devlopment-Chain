@@ -1,33 +1,12 @@
 # Proof of Authority Development Chain
 
 1. Issues persisted when running the puppeth directory as a class. 
-
-2. Navigate to the folder where we decompress Go Ethereum, in our case its Blockchain-tools
-3. In case of deploying Clique Algorithm, nodes have to created first then creating a network unlike Proof of Work.
-
-- I named node 1 after Aaron, our Instructor Assistant by running this command using geth
-
-        ./geth account new --datadir aaron
-- my node 2 is named afetr kyle, our Instructor Assistant I ran same command above after changing node name.
-- will prompoted to set a password twice, which can be saved later in a text file & store it in the node folder.
-- each node will generate public address key and path of secret key file
-- store the public address  in text by running echo "node public key" nodename.txt
-- store the password in text file by running echo "your password" node directory password.txt
-- the public addresses will be later used to create 2 wallet, each connected to different node.
-- the path of secret key will be stored in "keystore" folder in each node directory, each keystore file will be uploaded as private key when creating the 2 wallets.
-
-![](Images/1.jpg)
-1. Initiate the puppeth command to start building our network:
+1. When Initiatting the puppeth command to start building our network:
    
         ./puppeth
-2. Sepcify the given name to the network, in my case I named it after Garence our Instructor & net for network, so garencenet
-3. Next step is to build new genesis from scratch and to select Clique (PoA) as consensus engine
-4. Then we will be asked how many seconds should block take. I chose 7 seconds as I only have 2 nodes
-5. Sealer accounts are the voting nodes. Copy & paste public address of at least one node
-6. At least one account has to be refunded.
+we we were met with the following challenge 
+![](screenshots/puppeth%20attempt%201.png
 
-
-![](Images/2.jpg)
 
 7. Then, will be asked to specify network ID
 8. Next is to manage our existing genesis to export the genesis configurations on the local directory; which consist of 4 json files:
